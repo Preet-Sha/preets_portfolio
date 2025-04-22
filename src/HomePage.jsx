@@ -53,7 +53,6 @@ function HomePage() {
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
-  const educationRef = useRef(null);
   
   // Refs for scroll reveal elements
   const titleRefs = useRef([]);
@@ -165,7 +164,6 @@ function HomePage() {
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <button onClick={() => handleNavClick(projectsRef)}>Projects</button>
           <button onClick={() => handleNavClick(skillsRef)}>Skills</button>
-          <button onClick={() => handleNavClick(educationRef)}>Education</button>
           <button onClick={() => handleNavClick(contactRef)}>Contact</button>
         </div>
         <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
