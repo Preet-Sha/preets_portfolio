@@ -441,33 +441,6 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="education" id="education" ref={educationRef}>
-        <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Education</h2>
-        
-        <div className="education-container">
-          <div className="education-card">
-            <h3>NIT JALANDHAR</h3>
-            <h4>CSE DEPARTMENT</h4>
-            <div className="education-period">2023 - 2027</div>
-            <p>Currently pursuing a Bachelor's degree in Computer Science and Engineering.</p>
-          </div>
-          
-          <div className="education-card">
-            <h3>ARMY PUBLIC SCHOOL</h3>
-            <h4>AMRITSAR, PUNJAB</h4>
-            <div className="education-period">2020 - 2022</div>
-            <p>Completed senior secondary education with focus on Mathematics, Physics, and Computer Science.</p>
-          </div>
-          
-          <div className="education-card">
-            <h3>ARMY PUBLIC SCHOOL</h3>
-            <h4>NAGROTA, JAMMU</h4>
-            <div className="education-period">2018 - 2020</div>
-            <p>Completed secondary education with distinction in science and mathematics.</p>
-          </div>
-        </div>
-      </section>
-
       <section className="contact" ref={contactRef}>
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Get In Touch</h2>
         <p ref={(el) => addToRefs(el, contactElementRefs)}>
