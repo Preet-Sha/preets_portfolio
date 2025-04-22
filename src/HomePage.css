@@ -1804,4 +1804,37 @@ body {
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+/* More Skills Button */
+.more-skills-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.more-skills-button button {
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.more-skills-button button:hover {
+  background: rgba(255, 71, 87, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 71, 87, 0.1);
+}
+
+/* Hide More Skills button on mobile */
+@media (max-width: 480px) {
+  .more-skills-button {
+    display: none;
+  }
 } 

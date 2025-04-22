@@ -336,29 +336,6 @@ function HomePage() {
           <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
             <div className="project-card">
               <div className="project-image">
-                <img src="https://images.unsplash.com/photo-1522542194-69c68ba2531c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dice Game" />
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
-                    <span className="project-link"><i className="fab fa-github"></i></span>
-                  </div>
-                </div>
-              </div>
-              <div className="project-info">
-                <h3>Dice Me Game</h3>
-                <p>Created an interactive dice game with dynamic scoring system and multi-player capabilities. Incorporated appealing animations to enhance user engagement and game experience.</p>
-                <div className="project-tech">
-                  <span className="tech-tag">HTML</span>
-                  <span className="tech-tag">CSS</span>
-                  <span className="tech-tag">JavaScript</span>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
-            <div className="project-card">
-              <div className="project-image">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PACE Society" />
                 <div className="project-overlay">
                   <div className="project-links">
@@ -389,7 +366,7 @@ function HomePage() {
           <div className="cp-card">
             <div className="cp-header">
               <h3>Competitive Programming - Codeforces</h3>
-              <a href="https://codeforces.com/profile/preetsharma" target="_blank" rel="noopener noreferrer">View Profile</a>
+              <a href="https://codeforces.com/profile/_preet_sharma" target="_blank" rel="noopener noreferrer">View Profile</a>
             </div>
             <div className="cp-content">
               <div className="cp-stats">
@@ -423,7 +400,7 @@ function HomePage() {
               </div>
             </div>
             <div className="cp-platforms">
-              <span className="platform">Codeforces</span>
+              <span className="platform"><a href="https://codeforces.com/profile/_preet_sharma" target="_blank" rel="noopener noreferrer">Codeforces</a></span>
             </div>
           </div>
         </div>
@@ -456,6 +433,9 @@ function HomePage() {
               </div>
             ))}
           </div>
+          <div className="more-skills-button">
+            <button>More Skills Coming Soon...</button>
+          </div>
         </div>
       </section>
 
@@ -468,7 +448,8 @@ function HomePage() {
         <div className="contact-links">
           <a href="mailto:contact@preet.dev" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>Email</a>
           <a href="https://github.com/Preet-Sha" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>GitHub</a>
-          <a href="https://linkedin.com/in/preet" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>LinkedIn</a>
+          <a href="https://www.linkedin.com/in/preet-sharma-85b744313/" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>LinkedIn</a>
+          <a href="https://www.youtube.com/@preetsharma505" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>YouTube</a>
         </div>
       </section>
 
