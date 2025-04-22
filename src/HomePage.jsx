@@ -192,13 +192,13 @@ function HomePage() {
             </div>
           </div>
           <div className="social-icons">
-            <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/preet-sharma-85b744313/" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
             <a href="#" aria-label="Google Plus"><i className="fab fa-google-plus-g"></i></a>
             <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
             <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
           </div>
-          <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Print Resume</button>
+          <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Projects</button>
         </div>
       </section>
 
@@ -214,10 +214,10 @@ function HomePage() {
         </div>
         
         <div className="project-grid">
-          <a href="https://github.com/preet/travel-app" className="project-card-link">
+          <a href="https://placement-portal-cse.vercel.app/" className="project-card-link">
             <div className="project-card">
               <div className="project-image">
-                <img src="https://images.unsplash.com/photo-1583339793403-3d9b001b6008?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 1" />
+                <img src="https://v1.nitj.ac.in/ecell/assets/img/knm_slshow/one.jpg" alt="NITJ Placements" />
                 <div className="project-overlay">
                   <div className="project-links">
                     <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
@@ -226,22 +226,22 @@ function HomePage() {
                 </div>
               </div>
               <div className="project-info">
-                <h3>Modern Travel App</h3>
-                <p>A sleek travel planning application with interactive maps and personalized recommendations.</p>
+                <h3>Placement Portal Website for NIT Jalandhar</h3>
+                <p>Developed and deployed a placement portal integrated with the college's main website to streamline the placement process for students and recruiters.</p>
                 <div className="project-tech">
                   <span className="tech-tag">React</span>
                   <span className="tech-tag">Node.js</span>
                   <span className="tech-tag">MongoDB</span>
-                  <span className="tech-tag">Google Maps API</span>
+                  <span className="tech-tag">API Integration</span>
                 </div>
               </div>
             </div>
           </a>
           
-          <a href="https://github.com/preet/ecommerce-dashboard" className="project-card-link">
+          <a href="https://seatsetgo.live/" className="project-card-link">
             <div className="project-card">
               <div className="project-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 2" />
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="SeatSetGo" />
                 <div className="project-overlay">
                   <div className="project-links">
                     <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
@@ -250,37 +250,31 @@ function HomePage() {
                 </div>
               </div>
               <div className="project-info">
-                <h3>E-Commerce Dashboard</h3>
-                <p>A comprehensive dashboard for online store owners with real-time analytics and inventory management.</p>
+                <h3>JoSAA Counselling & Mentoring Website</h3>
+                <p>Designed and developed a website to assist IIT-JEE aspirants with JoSAA counselling by providing detailed guidance, important dates, choice-filling strategies, and mentoring support.</p>
+              </div>
+            </div>
+          </a>
+          
+          <a href="https://hackmol-repo.vercel.app/" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="TokenFlow" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>TokenFlow-Based GPT Model Marketplace</h3>
+                <p>Developed a real-time platform for buying and selling GPT models using token-based transactions, facilitating seamless interaction between Pro and Non-Pro users with blockchain integration.</p>
                 <div className="project-tech">
                   <span className="tech-tag">Vue.js</span>
-                  <span className="tech-tag">Express</span>
-                  <span className="tech-tag">PostgreSQL</span>
-                  <span className="tech-tag">Chart.js</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          
-          <a href="https://github.com/preet/code-learning-platform" className="project-card-link">
-            <div className="project-card">
-              <div className="project-image">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 3" />
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
-                    <span className="project-link"><i className="fab fa-github"></i></span>
-                  </div>
-                </div>
-              </div>
-              <div className="project-info">
-                <h3>Code Learning Platform</h3>
-                <p>An interactive platform for beginners to learn programming with hands-on exercises and real-time feedback.</p>
-                <div className="project-tech">
-                  <span className="tech-tag">React</span>
                   <span className="tech-tag">Firebase</span>
-                  <span className="tech-tag">CodeMirror</span>
-                  <span className="tech-tag">WebSockets</span>
+                  <span className="tech-tag">Web3.js</span>
+                  <span className="tech-tag">Solidity</span>
                 </div>
               </div>
             </div>
