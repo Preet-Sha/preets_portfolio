@@ -192,11 +192,10 @@ function HomePage() {
             </div>
           </div>
           <div className="social-icons">
-            <a href="https://www.linkedin.com/in/preet-sharma-85b744313/" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Google Plus"><i className="fab fa-google-plus-g"></i></a>
-            <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
-            <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/preet-sharma-85b744313/" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@preetsharma505" aria-label="YouTube"><i className="fab fa-youtube"></i></a>
+            <a href="https://github.com/Preet-Sha" aria-label="GitHub"><i className="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
           </div>
           <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Projects</button>
         </div>
@@ -252,6 +251,12 @@ function HomePage() {
               <div className="project-info">
                 <h3>JoSAA Counselling & Mentoring Website</h3>
                 <p>Designed and developed a website to assist IIT-JEE aspirants with JoSAA counselling by providing detailed guidance, important dates, choice-filling strategies, and mentoring support.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">ReactJS</span>
+                  <span className="tech-tag">API Integration</span>
+                  <span className="tech-tag">MongoDB</span>
+                  <span className="tech-tag">Excel</span>
+                </div>
               </div>
             </div>
           </a>
@@ -271,10 +276,105 @@ function HomePage() {
                 <h3>TokenFlow-Based GPT Model Marketplace</h3>
                 <p>Developed a real-time platform for buying and selling GPT models using token-based transactions, facilitating seamless interaction between Pro and Non-Pro users with blockchain integration.</p>
                 <div className="project-tech">
-                  <span className="tech-tag">Vue.js</span>
-                  <span className="tech-tag">Firebase</span>
+                  <span className="tech-tag">LLM</span>
+                  <span className="tech-tag">chatbot.AI</span>
                   <span className="tech-tag">Web3.js</span>
-                  <span className="tech-tag">Solidity</span>
+                  <span className="tech-tag">Reactjs</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          
+          <a href="https://youtu.be/8ECdUSBHA6s?si=qR4PpTmxzYIYzl9m" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Railway Tracker" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Railway Reservation & Tracker - HackMol 5.0 Winner</h3>
+                <p>Built a web app to help students track train availability and receive timely reminders for reservations. Aimed to solve booking issues for students with tight academic schedules by providing real-time seat tracking and alerts.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Node.js</span>
+                  <span className="tech-tag">MongoDB</span>
+                  <span className="tech-tag">Railway API</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spotify Clone" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Spotify Clone</h3>
+                <p>Developed a responsive Spotify clone with music playback capabilities, playlists, and user authentication. Implemented smooth animations and intuitive UI design to mirror the original app experience.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">HTML</span>
+                  <span className="tech-tag">CSS</span>
+                  <span className="tech-tag">JavaScript</span>
+                  <span className="tech-tag">Web API</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1522542194-69c68ba2531c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dice Game" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Dice Me Game</h3>
+                <p>Created an interactive dice game with dynamic scoring system and multi-player capabilities. Incorporated appealing animations to enhance user engagement and game experience.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">HTML</span>
+                  <span className="tech-tag">CSS</span>
+                  <span className="tech-tag">JavaScript</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PACE Society" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>PACE Society NIT Jalandhar - Coming Soon</h3>
+                <p>Designed and developed the official website for PACE Society at NIT Jalandhar. Features event showcases, member profiles, and registration portals. Currently in final development stages.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Tailwind CSS</span>
+                  <span className="tech-tag">Firebase</span>
+                  <span className="tech-tag">Responsive Design</span>
                 </div>
               </div>
             </div>
@@ -284,6 +384,50 @@ function HomePage() {
 
       <section className="skills" ref={skillsRef}>
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Skills & Technologies</h2>
+        
+        <div className="competitive-programming">
+          <div className="cp-card">
+            <div className="cp-header">
+              <h3>Competitive Programming - Codeforces</h3>
+              <a href="https://codeforces.com/profile/preetsharma" target="_blank" rel="noopener noreferrer">View Profile</a>
+            </div>
+            <div className="cp-content">
+              <div className="cp-stats">
+                <div className="cp-rating">
+                  <span className="rating-value">1300+</span>
+                  <span className="rating-label">Rating</span>
+                </div>
+                <div className="cp-rank">
+                  <span className="rank-value">Pupil</span>
+                  <span className="rank-label">Rank</span>
+                </div>
+                <div className="cp-solved">
+                  <span className="solved-value">300+</span>
+                  <span className="solved-label">Problems</span>
+                </div>
+              </div>
+              <div className="cp-chart">
+                <svg viewBox="0 0 100 100" className="progress-ring">
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#82aaff" />
+                      <stop offset="100%" stopColor="#6c5ce7" />
+                    </linearGradient>
+                  </defs>
+                  <circle className="progress-ring-circle-bg" cx="50" cy="50" r="45" />
+                  <circle className="progress-ring-circle" cx="50" cy="50" r="45" strokeDasharray="283" strokeDashoffset="100" />
+                </svg>
+                <div className="cp-chart-text">
+                  <span className="chart-value">Pupil</span>
+                </div>
+              </div>
+            </div>
+            <div className="cp-platforms">
+              <span className="platform">Codeforces</span>
+            </div>
+          </div>
+        </div>
+        
         <div className="skills-container">
           <div className="skill-tags-grid">
             {[
@@ -323,7 +467,7 @@ function HomePage() {
         </p>
         <div className="contact-links">
           <a href="mailto:contact@preet.dev" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>Email</a>
-          <a href="https://github.com/preet" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>GitHub</a>
+          <a href="https://github.com/Preet-Sha" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>GitHub</a>
           <a href="https://linkedin.com/in/preet" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>LinkedIn</a>
         </div>
       </section>
