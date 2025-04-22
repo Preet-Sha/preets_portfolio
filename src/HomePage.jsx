@@ -53,7 +53,6 @@ function HomePage() {
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
-  const skillProgressRefs = useRef([]);
   
   // Refs for scroll reveal elements
   const titleRefs = useRef([]);
@@ -76,16 +75,6 @@ function HomePage() {
   
   // Find the current role object to show its description
   const currentRole = roles.find(role => role.text === currentText) || roles[0];
-
-  // Skills data for chart
-  const skillsData = [
-    { name: "JavaScript", percent: 90 },
-    { name: "React.js", percent: 85 },
-    { name: "Node.js", percent: 80 },
-    { name: "HTML/CSS", percent: 95 },
-    { name: "UI/UX Design", percent: 75 },
-    { name: "MongoDB", percent: 70 }
-  ];
 
   useEffect(() => {
     // Add loaded class after a small delay to trigger animations
@@ -118,17 +107,6 @@ function HomePage() {
       revealElements(projectCardRefs);
       revealElements(skillTagRefs);
       revealElements(contactElementRefs);
-
-      // Animate skill bars when in viewport
-      skillProgressRefs.current.forEach(el => {
-        if (!el) return;
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < window.innerHeight - elementVisible) {
-          const percent = el.getAttribute('data-percent');
-          el.style.width = `${percent}%`;
-        }
-      });
     };
 
     // Close mobile menu when clicking outside
@@ -166,13 +144,6 @@ function HomePage() {
     }
   };
 
-  // Add ref for skill progress bars
-  const addToSkillRefs = (el) => {
-    if (el && !skillProgressRefs.current.includes(el)) {
-      skillProgressRefs.current.push(el);
-    }
-  };
-
   // Toggle mobile menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -186,17 +157,7 @@ function HomePage() {
 
   return (
     <div className={`homepage ${isLoaded ? 'loaded' : ''}`}>
-      {/* Background particles */}
-      <div className="particles">
-        {[...Array(6)].map((_, index) => (
-          <div key={index} className="particle" style={{ 
-            animation: `floatingParticles ${25 + index * 5}s linear infinite`,
-            animationDelay: `${index * 2}s`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-          }}></div>
-        ))}
-      </div>
+      {/* Background particles removed */}
       
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navbarRef}>
         <div className="nav-logo">PS</div>
@@ -223,7 +184,7 @@ function HomePage() {
           <div className="hero-intro">Hello, I am</div>
           <h1>Preet Sharma</h1>
           <div className="hero-subtitle">
-            Front-end Developer
+            CSE :- NIT JALANDHAR
             <span className="role-separator">|</span>
             <div className="role-animation">
               <span className="role-text">{currentText}</span>
@@ -239,68 +200,122 @@ function HomePage() {
           </div>
           <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Print Resume</button>
         </div>
-        
-        <div className="scroll-indicator" onClick={() => scrollToSection(projectsRef)}>
-          <div className="scroll-text">Scroll Down</div>
-          <div className="scroll-icon"></div>
-        </div>
       </section>
 
-      <section className="projects" ref={projectsRef}>
+      {/* Projects Section with enhanced styling */}
+      <section className="projects" id="projects" ref={projectsRef}>
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Featured Projects</h2>
+        <p className="section-subtitle">A showcase of my recent design and development work</p>
+        
+        <div className="guide-banner">
+          <i className="fas fa-arrow-down"></i>
+          <h3>Click on any project to see details</h3>
+          <i className="fas fa-arrow-down"></i>
+        </div>
+        
         <div className="project-grid">
-          <div className="project-card" ref={(el) => addToRefs(el, projectCardRefs)}>
-            <div className="project-image">Project Image</div>
-            <div className="project-info">
-              <h3>E-commerce Platform</h3>
-              <p>A full-featured online store with payment processing and inventory management.</p>
+          <a href="https://github.com/preet/travel-app" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1583339793403-3d9b001b6008?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 1" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Modern Travel App</h3>
+                <p>A sleek travel planning application with interactive maps and personalized recommendations.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Node.js</span>
+                  <span className="tech-tag">MongoDB</span>
+                  <span className="tech-tag">Google Maps API</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="project-card" ref={(el) => addToRefs(el, projectCardRefs)}>
-            <div className="project-image">Project Image</div>
-            <div className="project-info">
-              <h3>Task Management App</h3>
-              <p>A productivity application with drag-and-drop functionality and team collaboration.</p>
+          </a>
+          
+          <a href="https://github.com/preet/ecommerce-dashboard" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 2" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>E-Commerce Dashboard</h3>
+                <p>A comprehensive dashboard for online store owners with real-time analytics and inventory management.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">Vue.js</span>
+                  <span className="tech-tag">Express</span>
+                  <span className="tech-tag">PostgreSQL</span>
+                  <span className="tech-tag">Chart.js</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="project-card" ref={(el) => addToRefs(el, projectCardRefs)}>
-            <div className="project-image">Project Image</div>
-            <div className="project-info">
-              <h3>Weather Dashboard</h3>
-              <p>Real-time weather data visualization with location-based forecasting.</p>
+          </a>
+          
+          <a href="https://github.com/preet/code-learning-platform" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project 3" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Code Learning Platform</h3>
+                <p>An interactive platform for beginners to learn programming with hands-on exercises and real-time feedback.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Firebase</span>
+                  <span className="tech-tag">CodeMirror</span>
+                  <span className="tech-tag">WebSockets</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
       <section className="skills" ref={skillsRef}>
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Skills & Technologies</h2>
         <div className="skills-container">
-          <div className="skills-chart">
-            {skillsData.map((skill, index) => (
-              <div className="skill-row" key={index}>
-                <div className="skill-name">{skill.name}</div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress" 
-                    ref={addToSkillRefs}
-                    data-percent={skill.percent}
-                  ></div>
-                </div>
-                <div className="skill-percent">{skill.percent}%</div>
-              </div>
-            ))}
-          </div>
-          <div className="skill-tags">
-            {["React", "JavaScript", "TypeScript", "Node.js", "Express", "MongoDB", 
-              "SQL", "HTML5", "CSS3", "Responsive Design", "Git", "AWS"].map((skill, index) => (
-              <span 
+          <div className="skill-tags-grid">
+            {[
+              {name: "HTML"},
+              {name: "CSS"},
+              {name: "JavaScript"},
+              {name: "ReactJS"},
+              {name: "Tailwind"},
+              {name: "SQL"},
+              {name: "Data Visualization"},
+              {name: "Tableau"},
+              {name: "Power BI"},
+              {name: "C++"},
+              {name: "Python"},
+              {name: "Canva"},
+              {name: "VN Editor"},
+              {name: "Content Creation"},
+              {name: "Graphic Design"}
+            ].map((skill, index) => (
+              <div 
                 key={index} 
-                className="skill-tag" 
+                className="skill-item" 
                 ref={(el) => addToRefs(el, skillTagRefs)}
               >
-                {skill}
-              </span>
+                <div className="skill-name">{skill.name}</div>
+              </div>
             ))}
           </div>
         </div>
