@@ -3,9 +3,48 @@ import './HomePage.css';
 // Import the background image directly from the assets folder
 import backgroundImage from './assets/IMG_C7E5EB3A9F5F-1.jpeg';
 
+// Custom hook for typing animation
+function useTypingAnimation(texts, typingSpeed = 150, deletingSpeed = 75, delayBeforeDeleting = 1500, delayBeforeTyping = 500) {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      // Current word
+      const fullText = texts[currentTextIndex];
+      
+      // If deleting
+      if (isDeleting) {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+      } else {
+        // If typing
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+      }
+
+      // Determine next steps
+      if (!isDeleting && currentText === fullText) {
+        // If finished typing, start deleting after delay
+        setTimeout(() => setIsDeleting(true), delayBeforeDeleting);
+      } else if (isDeleting && currentText === '') {
+        // If finished deleting, move to next word
+        setIsDeleting(false);
+        setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        // Delay before typing the next word
+        setTimeout(() => {}, delayBeforeTyping);
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, currentTextIndex, isDeleting, texts, typingSpeed, deletingSpeed, delayBeforeDeleting, delayBeforeTyping]);
+
+  return { currentText, isTyping: !isDeleting && currentText !== texts[currentTextIndex] };
+}
+
 function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   
   // Log the background image path to verify it's imported correctly
   console.log("Background image path:", backgroundImage);
@@ -21,6 +60,22 @@ function HomePage() {
   const projectCardRefs = useRef([]);
   const skillTagRefs = useRef([]);
   const contactElementRefs = useRef([]);
+
+  // Roles for animation with enhanced descriptions and tooltips
+  const roles = [
+    { text: "Graphic Designer", desc: "Creating visually stunning designs that communicate ideas effectively" },
+    { text: "Avid Traveller", desc: "Exploring cultures and drawing inspiration from global experiences" },
+    { text: "Front-end Developer", desc: "Building beautiful and responsive user interfaces with modern technologies" },
+    { text: "UI/UX Enthusiast", desc: "Crafting intuitive and engaging user experiences" },
+    { text: "Web Developer", desc: "Bringing websites to life with HTML, CSS and JavaScript" },
+    { text: "Coder", desc: "Writing clean, efficient code with passion and attention to detail" }
+  ];
+  
+  // Use the custom typing animation hook with just the text
+  const { currentText } = useTypingAnimation(roles.map(role => role.text));
+  
+  // Find the current role object to show its description
+  const currentRole = roles.find(role => role.text === currentText) || roles[0];
 
   // Skills data for chart
   const skillsData = [
@@ -76,15 +131,26 @@ function HomePage() {
       });
     };
 
+    // Close mobile menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (menuOpen && 
+          !event.target.closest('.nav-links') && 
+          !event.target.closest('.menu-toggle')) {
+        setMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
     
     // Initial check for elements in view
     setTimeout(() => handleScroll(), 500);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [menuOpen]);
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({
@@ -107,6 +173,17 @@ function HomePage() {
     }
   };
 
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  // Close mobile menu when clicking a navigation item
+  const handleNavClick = (ref) => {
+    scrollToSection(ref);
+    if (menuOpen) setMenuOpen(false);
+  };
+
   return (
     <div className={`homepage ${isLoaded ? 'loaded' : ''}`}>
       {/* Background particles */}
@@ -123,10 +200,16 @@ function HomePage() {
       
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navbarRef}>
         <div className="nav-logo">PS</div>
-        <div className="nav-links">
-          <button onClick={() => scrollToSection(projectsRef)}>Projects</button>
-          <button onClick={() => scrollToSection(skillsRef)}>Skills</button>
-          <button onClick={() => scrollToSection(contactRef)}>Contact</button>
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <button onClick={() => handleNavClick(projectsRef)}>Projects</button>
+          <button onClick={() => handleNavClick(skillsRef)}>Skills</button>
+          <button onClick={() => handleNavClick(contactRef)}>Contact</button>
+        </div>
+        <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </nav>
 
@@ -139,7 +222,14 @@ function HomePage() {
         <div className="hero-content">
           <div className="hero-intro">Hello, I am</div>
           <h1>Preet Sharma</h1>
-          <div className="hero-subtitle">Front-end Designer | Developer</div>
+          <div className="hero-subtitle">
+            Front-end Developer
+            <span className="role-separator">|</span>
+            <div className="role-animation">
+              <span className="role-text">{currentText}</span>
+              <div className="role-tooltip">{currentRole.desc}</div>
+            </div>
+          </div>
           <div className="social-icons">
             <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
@@ -148,6 +238,11 @@ function HomePage() {
             <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
           </div>
           <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Print Resume</button>
+        </div>
+        
+        <div className="scroll-indicator" onClick={() => scrollToSection(projectsRef)}>
+          <div className="scroll-text">Scroll Down</div>
+          <div className="scroll-icon"></div>
         </div>
       </section>
 
