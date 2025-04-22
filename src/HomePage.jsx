@@ -1,16 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HomePage.css';
+// Import the background image directly from the assets folder
+import backgroundImage from './assets/IMG_C7E5EB3A9F5F-1.jpeg';
 
 function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [typingIndex, setTypingIndex] = useState(0);
-  const [skillsVisible, setSkillsVisible] = useState(false);
+  
+  // Log the background image path to verify it's imported correctly
+  console.log("Background image path:", backgroundImage);
   
   const navbarRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
+  const skillProgressRefs = useRef([]);
   
   // Refs for scroll reveal elements
   const titleRefs = useRef([]);
@@ -18,29 +22,14 @@ function HomePage() {
   const skillTagRefs = useRef([]);
   const contactElementRefs = useRef([]);
 
-  // Typing effect data
-  const typingTexts = ["a Web Developer", "a Coder", "a Graphic Designer"];
-
-  // Skills data
-  const frontendSkills = [
-    { name: "HTML/CSS", percentage: 95 },
-    { name: "JavaScript", percentage: 90 },
-    { name: "React", percentage: 85 },
-    { name: "UI/UX Design", percentage: 80 }
-  ];
-
-  const backendSkills = [
-    { name: "Node.js", percentage: 85 },
-    { name: "Express", percentage: 80 },
-    { name: "MongoDB", percentage: 75 },
-    { name: "SQL", percentage: 70 }
-  ];
-
-  const otherSkills = [
-    { name: "Git/GitHub", percentage: 90 },
-    { name: "Responsive Design", percentage: 95 },
-    { name: "Graphic Design", percentage: 80 },
-    { name: "Problem Solving", percentage: 85 }
+  // Skills data for chart
+  const skillsData = [
+    { name: "JavaScript", percent: 90 },
+    { name: "React.js", percent: 85 },
+    { name: "Node.js", percent: 80 },
+    { name: "HTML/CSS", percent: 95 },
+    { name: "UI/UX Design", percent: 75 },
+    { name: "MongoDB", percent: 70 }
   ];
 
   useEffect(() => {
@@ -49,11 +38,6 @@ function HomePage() {
       setIsLoaded(true);
     }, 100);
 
-    // Typing effect
-    const typingInterval = setInterval(() => {
-      setTypingIndex(prevIndex => (prevIndex + 1) % typingTexts.length);
-    }, 3000);
-
     // Navbar scroll effect
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -61,14 +45,6 @@ function HomePage() {
         setScrolled(true);
       } else {
         setScrolled(false);
-      }
-      
-      // Check if skills section is visible to trigger animations
-      if (skillsRef.current) {
-        const skillsTop = skillsRef.current.getBoundingClientRect().top;
-        if (skillsTop < window.innerHeight - 100) {
-          setSkillsVisible(true);
-        }
       }
       
       // Scroll reveal animation
@@ -87,6 +63,17 @@ function HomePage() {
       revealElements(projectCardRefs);
       revealElements(skillTagRefs);
       revealElements(contactElementRefs);
+
+      // Animate skill bars when in viewport
+      skillProgressRefs.current.forEach(el => {
+        if (!el) return;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible) {
+          const percent = el.getAttribute('data-percent');
+          el.style.width = `${percent}%`;
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -96,9 +83,8 @@ function HomePage() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearInterval(typingInterval);
     };
-  }, [typingTexts.length]);
+  }, []);
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({
@@ -114,14 +100,19 @@ function HomePage() {
     }
   };
 
+  // Add ref for skill progress bars
+  const addToSkillRefs = (el) => {
+    if (el && !skillProgressRefs.current.includes(el)) {
+      skillProgressRefs.current.push(el);
+    }
+  };
+
   return (
     <div className={`homepage ${isLoaded ? 'loaded' : ''}`}>
       {/* Background particles */}
       <div className="particles">
-        {[...Array(8)].map((_, index) => (
+        {[...Array(6)].map((_, index) => (
           <div key={index} className="particle" style={{ 
-            width: `${20 + Math.random() * 60}px`,
-            height: `${20 + Math.random() * 60}px`,
             animation: `floatingParticles ${25 + index * 5}s linear infinite`,
             animationDelay: `${index * 2}s`,
             top: `${Math.random() * 100}%`,
@@ -139,78 +130,24 @@ function HomePage() {
         </div>
       </nav>
 
-      <section className="hero">
+      <section className="hero" style={{ 
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${backgroundImage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover'
+      }}>
         <div className="hero-content">
-          <h1>Hello, I'm <span>Preet Sharma</span></h1>
-          <div className="typing-wrapper">
-            <div className="typing-effect">
-              I'm {typingTexts[typingIndex]}
-            </div>
+          <div className="hero-intro">Hello, I am</div>
+          <h1>Preet Sharma</h1>
+          <div className="hero-subtitle">Front-end Designer | Developer</div>
+          <div className="social-icons">
+            <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Google Plus"><i className="fab fa-google-plus-g"></i></a>
+            <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
           </div>
-          <p>
-            A passionate full-stack developer dedicated to creating elegant, user-friendly applications
-            that deliver exceptional experiences and solve real-world problems.
-          </p>
-          <button onClick={() => scrollToSection(projectsRef)} className="cta-button">View My Work</button>
-        </div>
-        
-        <div className="hero-image">
-          <div className="svg-animation">
-            <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0062ff" />
-                  <stop offset="100%" stopColor="#6c47ff" />
-                </linearGradient>
-              </defs>
-              <g transform="translate(400, 300)">
-                <circle r="150" fill="none" stroke="url(#gradient)" strokeWidth="4" opacity="0.2">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="0" 
-                    to="360" 
-                    dur="30s" 
-                    repeatCount="indefinite"
-                  />
-                </circle>
-                <circle r="120" fill="none" stroke="url(#gradient)" strokeWidth="3" opacity="0.4">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="360" 
-                    to="0" 
-                    dur="20s" 
-                    repeatCount="indefinite"
-                  />
-                </circle>
-                <circle r="90" fill="none" stroke="url(#gradient)" strokeWidth="2" opacity="0.6">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="0" 
-                    to="360" 
-                    dur="15s" 
-                    repeatCount="indefinite"
-                  />
-                </circle>
-                <circle r="180" fill="none" stroke="url(#gradient)" strokeWidth="1" opacity="0.1">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="360" 
-                    to="0" 
-                    dur="40s" 
-                    repeatCount="indefinite"
-                  />
-                </circle>
-                <g>
-                  <circle r="60" fill="url(#gradient)" opacity="0.2" />
-                  <text x="0" y="0" textAnchor="middle" fill="#6c47ff" fontWeight="bold" fontSize="24" dy=".3em">PS</text>
-                </g>
-              </g>
-            </svg>
-          </div>
+          <button onClick={() => scrollToSection(projectsRef)} className="cta-button">Print Resume</button>
         </div>
       </section>
 
@@ -244,62 +181,21 @@ function HomePage() {
       <section className="skills" ref={skillsRef}>
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Skills & Technologies</h2>
         <div className="skills-container">
-          <div className="skills-row">
-            <div className="skills-category">
-              <h3>Frontend</h3>
-              {frontendSkills.map((skill, index) => (
-                <div className="skill-bar" key={index}>
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percentage">{skill.percentage}%</span>
-                  </div>
-                  <div className="skill-progress-bg">
-                    <div 
-                      className={`skill-progress-fill ${skillsVisible ? 'animate' : ''}`} 
-                      style={{ width: `${skill.percentage}%` }}
-                    ></div>
-                  </div>
+          <div className="skills-chart">
+            {skillsData.map((skill, index) => (
+              <div className="skill-row" key={index}>
+                <div className="skill-name">{skill.name}</div>
+                <div className="skill-bar">
+                  <div 
+                    className="skill-progress" 
+                    ref={addToSkillRefs}
+                    data-percent={skill.percent}
+                  ></div>
                 </div>
-              ))}
-            </div>
-            
-            <div className="skills-category">
-              <h3>Backend</h3>
-              {backendSkills.map((skill, index) => (
-                <div className="skill-bar" key={index}>
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percentage">{skill.percentage}%</span>
-                  </div>
-                  <div className="skill-progress-bg">
-                    <div 
-                      className={`skill-progress-fill ${skillsVisible ? 'animate' : ''}`} 
-                      style={{ width: `${skill.percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="skills-category">
-              <h3>Other Skills</h3>
-              {otherSkills.map((skill, index) => (
-                <div className="skill-bar" key={index}>
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percentage">{skill.percentage}%</span>
-                  </div>
-                  <div className="skill-progress-bg">
-                    <div 
-                      className={`skill-progress-fill ${skillsVisible ? 'animate' : ''}`} 
-                      style={{ width: `${skill.percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                <div className="skill-percent">{skill.percent}%</div>
+              </div>
+            ))}
           </div>
-          
           <div className="skill-tags">
             {["React", "JavaScript", "TypeScript", "Node.js", "Express", "MongoDB", 
               "SQL", "HTML5", "CSS3", "Responsive Design", "Git", "AWS"].map((skill, index) => (
@@ -319,8 +215,7 @@ function HomePage() {
         <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Get In Touch</h2>
         <p ref={(el) => addToRefs(el, contactElementRefs)}>
           I'm currently available for freelance work and full-time opportunities. 
-          If you have a project in mind or want to discuss potential collaborations,
-          feel free to reach out!
+          Feel free to reach out if you'd like to collaborate!
         </p>
         <div className="contact-links">
           <a href="mailto:contact@preet.dev" className="contact-link" ref={(el) => addToRefs(el, contactElementRefs)}>Email</a>
