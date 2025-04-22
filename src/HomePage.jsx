@@ -53,6 +53,7 @@ function HomePage() {
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
+  const educationRef = useRef(null);
   
   // Refs for scroll reveal elements
   const titleRefs = useRef([]);
@@ -164,6 +165,7 @@ function HomePage() {
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <button onClick={() => handleNavClick(projectsRef)}>Projects</button>
           <button onClick={() => handleNavClick(skillsRef)}>Skills</button>
+          <button onClick={() => handleNavClick(educationRef)}>Education</button>
           <button onClick={() => handleNavClick(contactRef)}>Contact</button>
         </div>
         <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -435,6 +437,33 @@ function HomePage() {
           </div>
           <div className="more-skills-button">
             <button>More Skills Coming Soon...</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="education" id="education" ref={educationRef}>
+        <h2 className="section-title" ref={(el) => addToRefs(el, titleRefs)}>Education</h2>
+        
+        <div className="education-container">
+          <div className="education-card">
+            <h3>NIT JALANDHAR</h3>
+            <h4>CSE DEPARTMENT</h4>
+            <div className="education-period">2023 - 2027</div>
+            <p>Currently pursuing a Bachelor's degree in Computer Science and Engineering.</p>
+          </div>
+          
+          <div className="education-card">
+            <h3>ARMY PUBLIC SCHOOL</h3>
+            <h4>AMRITSAR, PUNJAB</h4>
+            <div className="education-period">2020 - 2022</div>
+            <p>Completed senior secondary education with focus on Mathematics, Physics, and Computer Science.</p>
+          </div>
+          
+          <div className="education-card">
+            <h3>ARMY PUBLIC SCHOOL</h3>
+            <h4>NAGROTA, JAMMU</h4>
+            <div className="education-period">2018 - 2020</div>
+            <p>Completed secondary education with distinction in science and mathematics.</p>
           </div>
         </div>
       </section>
