@@ -309,6 +309,30 @@ function HomePage() {
             </div>
           </a>
 
+          <a href="https://crypto-tracker-internship-project.vercel.app/" className="project-card-link">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crypto Tracker" />
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <span className="project-link"><i className="fas fa-external-link-alt"></i></span>
+                    <span className="project-link"><i className="fab fa-github"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3>Real-Time Crypto Tracker - XivTech Internship</h3>
+                <p>Developed a real-time cryptocurrency tracker as an internship task for XivTech. The application monitors live crypto prices, market trends, and provides detailed analytics for investors.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Redux</span>
+                  <span className="tech-tag">API Integration</span>
+                  <span className="tech-tag">Chart.js</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
           <a href="javascript:void(0)" className="project-card-link" style={{ pointerEvents: 'none' }}>
             <div className="project-card">
               <div className="project-image">
