@@ -348,10 +348,10 @@ function HomePage() {
                 <h3>Weather App - Prodigy Infotech Internship</h3>
                 <p>Built a responsive weather application as part of a Prodigy Infotech internship task. The app provides real-time weather data including temperature, humidity, wind speed, and atmospheric pressure for any location.</p>
                 <div className="project-tech">
-                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">HTML</span>
                   <span className="tech-tag">Weather API</span>
-                  <span className="tech-tag">CSS3</span>
-                  <span className="tech-tag">Responsive Design</span>
+                  <span className="tech-tag">TailwindCSS</span>
+                  <span className="tech-tag">JavaScript</span>
                 </div>
               </div>
             </div>
