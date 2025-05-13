@@ -213,6 +213,25 @@ function HomePage() {
         </div>
         
         <div className="project-grid">
+          {/* InAmigos Foundation Internship Card (clickable, second position) */}
+          <a href="https://inamigosfoundation.org.in/" className="project-card-link" target="_blank" rel="noopener noreferrer">
+            <div className="project-card">
+              <div className="project-image" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f6fa', color: '#222', fontWeight: 'bold', fontSize: '2.2rem', letterSpacing: '2px' }}>
+                INAMIGOS
+              </div>
+              <div className="project-info">
+                <h3>Internship Completion - InAmigos Foundation</h3>
+                <p>Successfully completed an internship as a Visual & Graphic Designer at InAmigos Foundation (Non-Profit NGO). Contributed to impactful design projects for social good. Learn more about the foundation and its causes.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">Graphic Design</span>
+                  <span className="tech-tag">Visual Design</span>
+                  <span className="tech-tag">NGO</span>
+                  <span className="tech-tag">Internship</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          
           <a href="https://placement-portal-cse.vercel.app/" className="project-card-link">
             <div className="project-card">
               <div className="project-image">
