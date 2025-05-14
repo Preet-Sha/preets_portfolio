@@ -64,6 +64,7 @@ function HomePage() {
   const roles = [
     { text: "Graphic Designer", desc: "Creating visually stunning designs that communicate ideas effectively" },
     { text: "Avid Traveller", desc: "Exploring cultures and drawing inspiration from global experiences" },
+    { text: "Data Analyst", desc: "Convert boring data into engaging insights" },
     { text: "Front-end Developer", desc: "Building beautiful and responsive user interfaces with modern technologies" },
     { text: "UI/UX Enthusiast", desc: "Crafting intuitive and engaging user experiences" },
     { text: "Web Developer", desc: "Bringing websites to life with HTML, CSS and JavaScript" },
@@ -227,6 +228,24 @@ function HomePage() {
                   <span className="tech-tag">Visual Design</span>
                   <span className="tech-tag">NGO</span>
                   <span className="tech-tag">Internship</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          {/* Netflix Data Analysis Project Card */}
+          <a href="https://www.canva.com/design/DAGndONLkzU/6sirmY-cQQ8qxYLHTEv1RA/view?utm_content=DAGndONLkzU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3fb7084c49" className="project-card-link" target="_blank" rel="noopener noreferrer">
+            <div className="project-card">
+              <div className="project-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png" alt="Netflix Logo" style={{ width: '90%', height: 'auto', objectFit: 'contain' }} />
+              </div>
+              <div className="project-info">
+                <h3>Netflix Data Analysis Project</h3>
+                <p>Explored and visualized Netflix's global content dataset using Python (Pandas, Matplotlib). Cleaned and processed data, and built multiple visualizations and use object oriented API to reveal trends in content type, ratings, duration, countries, and yearly release patterns. Exported visual insights as image reports for presentation.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">Python</span>
+                  <span className="tech-tag">Pandas</span>
+                  <span className="tech-tag">Matplotlib</span>
+                  <span className="tech-tag">Data Visualization</span>
                 </div>
               </div>
             </div>
